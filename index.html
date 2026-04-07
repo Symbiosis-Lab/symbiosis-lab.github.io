@@ -66,12 +66,12 @@
   .hero-image {
     position: absolute;
     inset: -15%;
-    animation: kenburns 20s ease-in-out infinite alternate;
+    animation: kenburns 12s ease-in-out infinite alternate;
     will-change: transform;
     background-color: #000000;
     background-image: url('earthrise.webp');
     background-size: cover;
-    background-position: center;
+    background-position: 68% 25%;
   }
 
   @keyframes kenburns {
@@ -334,14 +334,7 @@
 
   @media (max-width: 600px) {
     .hero-image {
-      background-size: auto 130%;
-      background-position: 73% 26%;
-      animation-name: kenburns-mobile;
-      animation-duration: 16s;
-    }
-    @keyframes kenburns-mobile {
-      0%   { transform: scale(1.0) translate(0, 0); }
-      100% { transform: scale(1.18) translate(-8%, 5%); }
+      background-position: 73% 25%;
     }
     .content-inner {
       padding: 4rem 1.5rem 3.5rem;

@@ -265,7 +265,7 @@
     width: 40px;
     height: 1px;
     background: var(--color-white-faint);
-    margin: 4rem 0;
+    margin: 6rem 0 5rem;
     opacity: 0;
     transition: opacity 0.8s ease 0.5s;
   }
@@ -276,7 +276,7 @@
     font-size: 2.4rem;
     letter-spacing: 0.08em;
     color: var(--color-white);
-    margin-bottom: 1.8rem;
+    margin-bottom: 2.4rem;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
@@ -285,13 +285,28 @@
   .work-desc {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 1.75;
+    font-size: 1.2rem;
+    line-height: 1.85;
     color: var(--color-white-dim);
-    margin-bottom: 1.2rem;
+    margin-bottom: 2.4rem;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+  }
+
+  .work-desc.last {
+    margin-bottom: 3.2rem;
+  }
+
+  .work-desc.lead {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+    color: var(--color-white);
+    margin-bottom: 2.8rem;
   }
 
   .work-desc strong {
@@ -300,14 +315,13 @@
   }
 
   .work-desc .inline-link {
-    color: inherit;
+    color: var(--color-moss-bright);
     text-decoration: underline;
-    text-decoration-color: rgba(255,255,255,0.2);
+    text-decoration-color: var(--color-moss-dim);
     text-underline-offset: 3px;
     transition: text-decoration-color 0.25s ease, color 0.25s ease;
   }
   .work-desc .inline-link:hover {
-    color: var(--color-moss-bright);
     text-decoration-color: var(--color-moss-bright);
   }
 
@@ -317,7 +331,7 @@
     font-style: italic;
     font-size: 1rem;
     color: var(--color-white-faint);
-    margin-bottom: 2rem;
+    margin-bottom: 2.6rem;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease 0.85s, transform 0.8s ease 0.85s;
@@ -535,16 +549,21 @@
 
       <h2 class="work-name">Custom web craft</h2>
 
+      <p class="work-desc lead">
+        A small practice for websites that do things other websites can't.
+      </p>
+
       <p class="work-desc">
-        <strong>A small practice for content-heavy websites that do things other websites can't.</strong>
-        We take on a handful of commissions each year, for people who update their site
-        often and treat it as an instrument rather than a template. Custom visualizations,
-        physics-based interaction, generative interfaces, spatial UIs, research demos,
-        all built over content that stays plain markdown. With
-        <a class="inline-link" href="https://github.com/Symbiosis-Lab/moss-releases">moss</a>,
-        your writing lives in files you can read, edit, and version without the website;
-        presentation lives in code. The two never get tangled. No CMS. No platform to
-        outgrow. No prose baked into HTML. AI-hackable, human-readable.
+        We take on a handful of commissions each year, for people who see their site
+        as more than a template and want to push the envelope of what a website can do.
+        Custom visualizations, physics-based interaction, generative interfaces, spatial UIs,
+        research demos, all built over content that stays plain markdown.
+      </p>
+
+      <p class="work-desc last">
+        With <a class="inline-link" href="https://github.com/Symbiosis-Lab/moss-releases">moss</a>,
+        your writing lives in files you can read, edit, and version without the website.
+        No CMS. No platform to outgrow.
       </p>
 
       <p class="work-clients">Clients on request.</p>

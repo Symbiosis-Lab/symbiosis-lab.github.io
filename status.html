@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status · Symbiosis Lab</title>
+<meta name="description" content="Operational status for Symbiosis Lab services.">
+<link rel="canonical" href="https://symbiosis-lab.org/status">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --color-white: rgba(255, 255, 255, 0.92);
+    --color-white-dim: rgba(255, 255, 255, 0.55);
+    --color-white-faint: rgba(255, 255, 255, 0.25);
+    --color-moss: #6b9a6b;
+    --color-moss-bright: #7db87d;
+    --color-moss-dim: rgba(107, 154, 107, 0.5);
+    --color-amber: #d4a355;
+    --color-red: #c86b5c;
+    --color-deep: #000000;
+    --font-display: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  }
+
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    background: var(--color-deep);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    flex: 1;
+    width: 100%;
+  }
+
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-white-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+  .breadcrumb a { color: var(--color-white-faint); text-decoration: none; transition: color 0.25s ease; }
+  .breadcrumb a:hover { color: var(--color-moss-bright); }
+
+  .overall {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .overall .dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--color-white-faint);
+    transition: background 0.4s ease;
+    flex-shrink: 0;
+  }
+  .overall[data-status="ok"] .dot { background: var(--color-moss-bright); }
+  .overall[data-status="degraded"] .dot { background: var(--color-amber); }
+  .overall[data-status="down"] .dot { background: var(--color-red); }
+
+  .checked {
+    font-size: 0.9rem;
+    color: var(--color-white-faint);
+    margin-bottom: 3rem;
+  }
+  .checked a {
+    color: var(--color-white-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-white-faint);
+    margin-left: 0.6rem;
+    padding-bottom: 1px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .checked a:hover { color: var(--color-moss-bright); border-color: var(--color-moss-bright); }
+
+  .services {
+    list-style: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .services li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    gap: 1rem;
+  }
+  .service-name {
+    font-size: 1.05rem;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .service-name .dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--color-white-faint);
+    transition: background 0.4s ease;
+    flex-shrink: 0;
+  }
+  .service-name[data-status="ok"] .dot { background: var(--color-moss-bright); }
+  .service-name[data-status="degraded"] .dot { background: var(--color-amber); }
+  .service-name[data-status="down"] .dot { background: var(--color-red); }
+  .service-uptime {
+    font-size: 0.9rem;
+    color: var(--color-white-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .error {
+    padding: 2rem 0;
+    color: var(--color-white-dim);
+    font-size: 1rem;
+  }
+  .error a {
+    color: var(--color-white-dim);
+    border-bottom: 1px solid var(--color-white-faint);
+    text-decoration: none;
+  }
+  .error a:hover { color: var(--color-moss-bright); border-color: var(--color-moss-bright); }
+
+  footer {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-white-faint);
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+  }
+  footer a { color: var(--color-white-faint); text-decoration: none; transition: color 0.25s; }
+  footer a:hover { color: var(--color-moss-dim); }
+
+  @media (max-width: 600px) {
+    main { padding: 4rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <div class="breadcrumb"><a href="/">Symbiosis Lab</a> / Status</div>
+
+    <div class="overall" id="overall" data-status="checking">
+      <span class="dot"></span>
+      <span id="overall-label">Checking</span>
+    </div>
+    <div class="checked" id="checked">
+      <span id="checked-text">Fetching latest results</span>
+      <a href="#" id="recheck" hidden>Recheck</a>
+    </div>
+
+    <ul class="services" id="services"></ul>
+    <div class="error" id="error" hidden>
+      Status data unavailable. If this persists, email
+      <a href="mailto:hi@symbiosis-lab.org">hi@symbiosis-lab.org</a>.
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">&larr; back to symbiosis-lab.org</a>
+  </footer>
+
+<script>
+  const API = 'https://api.mosspub.com/status/api/v1/endpoints/statuses';
+
+  function computeStatus(ep) {
+    const results = ep.results || [];
+    const latest = results[results.length - 1];
+    if (!latest) return 'unknown';
+    if (latest.success) return 'ok';
+    const tail = results.slice(-5);
+    return tail.some(r => r.success) ? 'degraded' : 'down';
+  }
+
+  function computeUptime(ep) {
+    const results = ep.results || [];
+    if (!results.length) return null;
+    const ok = results.filter(r => r.success).length;
+    return ok / results.length;
+  }
+
+  function formatPct(x) {
+    if (x === null) return '—';
+    return (x * 100).toFixed(x >= 0.999 ? 2 : 1) + '%';
+  }
+
+  function render(data) {
+    const production = data.filter(e => e.group === 'production');
+    const servicesEl = document.getElementById('services');
+    servicesEl.innerHTML = '';
+
+    let anyDown = false, anyDegraded = false;
+
+    for (const ep of production) {
+      const status = computeStatus(ep);
+      if (status === 'down') anyDown = true;
+      if (status === 'degraded') anyDegraded = true;
+      const uptime = computeUptime(ep);
+      const li = document.createElement('li');
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'service-name';
+      nameSpan.setAttribute('data-status', status);
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      nameSpan.appendChild(dot);
+      nameSpan.appendChild(document.createTextNode(ep.name));
+      const uptimeSpan = document.createElement('span');
+      uptimeSpan.className = 'service-uptime';
+      uptimeSpan.textContent = formatPct(uptime) + ' uptime';
+      li.appendChild(nameSpan);
+      li.appendChild(uptimeSpan);
+      servicesEl.appendChild(li);
+    }
+
+    const overall = anyDown ? 'down' : anyDegraded ? 'degraded' : 'ok';
+    const labels = {
+      ok: 'All systems operational',
+      degraded: 'Partial degradation',
+      down: 'Service disruption',
+    };
+    const overallEl = document.getElementById('overall');
+    overallEl.setAttribute('data-status', overall);
+    document.getElementById('overall-label').textContent = labels[overall];
+
+    const now = new Date();
+    const t = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('checked-text').textContent = 'Last checked ' + t;
+    document.getElementById('recheck').hidden = false;
+  }
+
+  async function load() {
+    document.getElementById('error').hidden = true;
+    document.getElementById('overall').setAttribute('data-status', 'checking');
+    document.getElementById('overall-label').textContent = 'Checking';
+    document.getElementById('checked-text').textContent = 'Fetching latest results';
+    document.getElementById('recheck').hidden = true;
+
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 5000);
+      const res = await fetch(API, { signal: ctrl.signal, cache: 'no-store' });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      render(data);
+    } catch (_) {
+      document.getElementById('overall').setAttribute('data-status', 'unknown');
+      document.getElementById('overall-label').textContent = 'Status unavailable';
+      document.getElementById('checked-text').textContent = '';
+      document.getElementById('services').innerHTML = '';
+      document.getElementById('error').hidden = false;
+      document.getElementById('recheck').hidden = false;
+    }
+  }
+
+  document.getElementById('recheck').addEventListener('click', (e) => {
+    e.preventDefault();
+    load();
+  });
+
+  load();
+</script>
+</body>
+</html>

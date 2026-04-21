@@ -259,6 +259,105 @@
     opacity: 1;
   }
 
+  /* ── Custom work section ──────────────────────────────── */
+
+  .work-separator {
+    width: 40px;
+    height: 1px;
+    background: var(--color-white-faint);
+    margin: 6rem 0 5rem;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.5s;
+  }
+
+  .work-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.4rem;
+    letter-spacing: 0.08em;
+    color: var(--color-white);
+    margin-bottom: 2.4rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
+  }
+
+  .work-desc {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.85;
+    color: var(--color-white-dim);
+    margin-bottom: 2.4rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+  }
+
+  .work-desc.last {
+    margin-bottom: 3.2rem;
+  }
+
+  .work-desc.lead {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+    color: var(--color-white);
+    margin-bottom: 2.8rem;
+  }
+
+  .work-desc strong {
+    color: var(--color-white);
+    font-weight: 400;
+  }
+
+  .work-desc .inline-link {
+    color: var(--color-moss-bright);
+    text-decoration: underline;
+    text-decoration-color: var(--color-moss-dim);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.25s ease, color 0.25s ease;
+  }
+  .work-desc .inline-link:hover {
+    text-decoration-color: var(--color-moss-bright);
+  }
+
+  .work-clients {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--color-white-faint);
+    margin-bottom: 2.6rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.85s, transform 0.8s ease 0.85s;
+  }
+
+  .work-cta {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 1s, transform 0.8s ease 1s;
+  }
+  .work-cta a {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--color-white-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-white-faint);
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .work-cta a:hover {
+    color: var(--color-moss-bright);
+    border-color: var(--color-moss-bright);
+  }
+
   /* ── Divider ───────────────────────────────────────────── */
 
   .separator {
@@ -306,12 +405,47 @@
     color: var(--color-moss-dim);
   }
 
+  /* ── Status pill ───────────────────────────────────────── */
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-white-faint);
+    text-decoration: none;
+    margin-right: 0.6rem;
+    transition: color 0.25s ease;
+  }
+  .status-pill:hover { color: var(--color-moss-bright); }
+
+  .status-pill .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-white-faint);
+    transition: background 0.4s ease;
+    flex-shrink: 0;
+  }
+  .status-pill[data-status="ok"] .dot { background: var(--color-moss-bright); }
+  .status-pill[data-status="degraded"] .dot { background: #d4a355; }
+  .status-pill[data-status="down"] .dot { background: #c86b5c; }
+
+  .status-pill-sep {
+    color: var(--color-white-faint);
+    margin-right: 0.6rem;
+  }
+
   /* ── Reveal state ──────────────────────────────────────── */
 
   .revealed .moss-name,
   .revealed .moss-desc,
   .revealed .moss-formats,
   .revealed .links,
+  .revealed .work-separator,
+  .revealed .work-name,
+  .revealed .work-desc,
+  .revealed .work-clients,
+  .revealed .work-cta,
   .revealed .separator,
   .revealed .footer {
     opacity: 1;
@@ -411,9 +545,41 @@
         </a>
       </nav>
 
+      <div class="work-separator"></div>
+
+      <h2 class="work-name">Custom web craft</h2>
+
+      <p class="work-desc lead">
+        A small practice for websites that do things other websites can't.
+      </p>
+
+      <p class="work-desc">
+        We take on a handful of commissions each year, for people who see their site
+        as more than a template and want to push the envelope of what a website can do.
+        Custom visualizations, physics-based interaction, generative interfaces, spatial UIs,
+        research demos, all built over content that stays plain markdown.
+      </p>
+
+      <p class="work-desc last">
+        With <a class="inline-link" href="https://github.com/Symbiosis-Lab/moss-releases">moss</a>,
+        your writing lives in files you can read, edit, and version without the website.
+        No CMS. No platform to outgrow.
+      </p>
+
+      <p class="work-clients">Clients on request.</p>
+
+      <p class="work-cta">
+        <a href="mailto:hi@symbiosis-lab.org">Start a conversation &rarr;</a>
+      </p>
+
       <div class="separator"></div>
 
       <footer class="footer">
+        <a class="status-pill" id="statusPill" href="/status.html" data-status="unknown" aria-label="Service status">
+          <span class="dot"></span>
+          <span id="statusLabel">checking</span>
+        </a>
+        <span class="status-pill-sep">·</span>
         <a href="https://github.com/Symbiosis-Lab"><img src="favicon.svg" alt="Symbiosis Lab" class="footer-logo">Symbiosis Lab</a> · 2026
       </footer>
 
@@ -455,6 +621,46 @@
       ticking = true;
     }
   });
+
+  // Status pill: fetch Gatus JSON, filter to group: production, render.
+  // Leaves the pill as "unknown / checking" if the API is unreachable
+  // rather than flashing red — a transient network blip should not look
+  // like an outage.
+  (async () => {
+    const pill = document.getElementById('statusPill');
+    const label = document.getElementById('statusLabel');
+    if (!pill) return;
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 3000);
+      const res = await fetch('https://api.mosspub.com/status/api/v1/endpoints/statuses', {
+        signal: ctrl.signal,
+        cache: 'no-store',
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const production = data.filter(e => e.group === 'production');
+      let anyDown = false, anyDegraded = false;
+      for (const ep of production) {
+        const results = ep.results || [];
+        const latest = results[results.length - 1];
+        if (!latest) continue;
+        if (!latest.success) {
+          const tail = results.slice(-5);
+          if (tail.some(r => r.success)) anyDegraded = true;
+          else anyDown = true;
+        }
+      }
+      const status = anyDown ? 'down' : anyDegraded ? 'degraded' : 'ok';
+      const labelText = { ok: 'operational', degraded: 'degraded', down: 'offline' }[status];
+      pill.setAttribute('data-status', status);
+      label.textContent = labelText;
+    } catch (_) {
+      pill.setAttribute('data-status', 'unknown');
+      label.textContent = 'status unavailable';
+    }
+  })();
 </script>
 
 </body>

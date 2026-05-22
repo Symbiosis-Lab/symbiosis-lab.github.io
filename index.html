@@ -186,6 +186,8 @@
     letter-spacing: 0.08em;
     color: var(--color-moss);
     margin-bottom: 1.8rem;
+    position: relative;
+    scroll-margin-top: 2rem;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -277,9 +279,41 @@
     letter-spacing: 0.08em;
     color: var(--color-white);
     margin-bottom: 2.4rem;
+    position: relative;
+    scroll-margin-top: 2rem;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
+  }
+
+  .heading-anchor {
+    display: inline-block;
+    margin-right: 0.35em;
+    font-family: var(--font-display);
+    font-size: 0.55em;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    vertical-align: 0.45em;
+    color: var(--color-moss-dim);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .heading-anchor:hover,
+  .heading-anchor:focus-visible {
+    color: var(--color-moss-bright);
+    outline: none;
+  }
+
+  @media (min-width: 760px) {
+    .heading-anchor {
+      position: absolute;
+      right: 100%;
+      top: 0;
+      margin-right: 0.6em;
+      vertical-align: baseline;
+    }
   }
 
   .work-desc {
@@ -517,7 +551,9 @@
   <section class="content" id="content">
     <div class="content-inner" id="contentInner">
 
-      <h2 class="moss-name">moss</h2>
+      <h2 id="moss" class="moss-name">
+        <a class="heading-anchor" href="#moss" aria-label="Link to section: moss">#</a>moss
+      </h2>
 
       <p class="moss-desc">
         <strong>Your files become your website. One click.</strong>
@@ -547,7 +583,9 @@
 
       <div class="work-separator"></div>
 
-      <h2 class="work-name">Custom web craft</h2>
+      <h2 id="custom-web-craft" class="work-name">
+        <a class="heading-anchor" href="#custom-web-craft" aria-label="Link to section: Custom web craft">#</a>Custom web craft
+      </h2>
 
       <p class="work-desc lead">
         A small practice for websites that do things other websites can't.

@@ -1,0 +1,55 @@
+# Builds the site with a pinned moss release and publishes it to GitHub Pages.
+# Prepared on the moss-port branch and inert until the branch is merged to the
+# default branch and Settings -> Pages -> Source is set to "GitHub Actions".
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # v0.15.8 builds this site with `--strict` and no warnings. Bump deliberately.
+  MOSS_VERSION: v0.15.8
+  MOSS_LINUX_SHA256: a3b88d55118a4fa1404f0e9e70d7e20127c5c39d919b8162424080599e5de9e0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install moss
+        run: |
+          curl -fsSL -o moss "https://github.com/Symbiosis-Lab/moss/releases/download/${MOSS_VERSION}/moss-linux-x86_64"
+          echo "${MOSS_LINUX_SHA256}  moss" | sha256sum -c -
+          chmod +x moss
+          ./moss --version
+
+      - name: Build
+        run: ./moss build . --strict --site-url=https://symbiosis-lab.org
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .moss/build.nosync/current
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

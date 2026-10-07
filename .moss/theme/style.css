@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:wght@300;400;500&display=swap");
+
+/* Symbiosis Lab is a dark-only brand: the same near-black ground and white
+   type whatever the reader's OS prefers, so light and dark carry one palette. */
+:root,
+:root[data-theme="dark"] {
+  --moss-color-bg: #000000;
+  --moss-color-surface: #000000;
+  --moss-color-text: rgba(255, 255, 255, 0.92);
+  --moss-color-text-secondary: rgba(255, 255, 255, 0.55);
+  --moss-color-muted: rgba(255, 255, 255, 0.5); /* 5.3:1 on black */
+  --moss-color-accent: #7db87d;
+  --moss-color-accent-hover: #7db87d;
+  --moss-color-ui-accent: #7db87d;
+  --moss-border-light: rgba(255, 255, 255, 0.25);
+  --moss-font-body: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  --moss-font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --moss-font-heading-weight: 400;
+  --moss-font-weight-body: 300;
+  --sl-moss: #6b9a6b;
+  --sl-moss-bright: #7db87d;
+  --sl-moss-dim: rgba(107, 154, 107, 0.5);
+  --sl-faint: rgba(255, 255, 255, 0.25); /* decorative only: lines, borders, idle dots */
+  --sl-faint-text: rgba(255, 255, 255, 0.5); /* faint text, 5.3:1 on black */
+  --sl-dim: rgba(255, 255, 255, 0.55);
+  --sl-amber: #d4a355;
+  --sl-red: #c86b5c;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* No site chrome: the original has no nav bar and no theme toggle. */
+header, .moss-colophon { display: none; }
+
+main article { max-width: 640px; margin-inline: auto; padding: 0 2rem; }
+main article h2 { font-family: var(--moss-font-heading); font-weight: 400; font-size: 2.4rem; letter-spacing: 0.08em; line-height: 1.2; margin: 0 0 1.8rem; scroll-margin-top: 2rem; position: relative; }
+main article p { font-size: 1.2rem; line-height: 1.85; color: var(--sl-dim); margin: 0 0 2.4rem; }
+main article p strong { color: var(--moss-color-text); font-weight: 400; }
+main article a { color: var(--sl-moss-bright); text-decoration: underline; text-decoration-color: var(--sl-moss-dim); text-underline-offset: 3px; }
+main article a:hover { text-decoration-color: var(--sl-moss-bright); }
+
+/* shim: moss gap — a hero that stays fixed while the page scrolls over it; delete when moss provides it */
+/* ── Home: fixed Earthrise hero, content panel scrolls over it ── */
+body[data-page="home"] .moss-hero {
+  position: fixed; inset: 0; width: 100%; height: 100vh; max-height: none; margin: 0; z-index: 0; overflow: hidden;
+}
+body[data-page="home"] .moss-hero img {
+  position: absolute; inset: -15%; width: 130%; height: 130%; max-width: none; object-fit: cover; object-position: 68% 25%;
+  animation: kenburns 12s ease-in-out infinite alternate; will-change: transform;
+}
+@keyframes kenburns { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.12) translate(-5%, 3%); } }
+body[data-page="home"] .moss-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at 45% 55%, transparent 30%, rgba(0,0,0,0.45) 100%), linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%);
+}
+body[data-page="home"] .moss-hero-content {
+  position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 0 2rem; text-align: center; background: none; inset: auto; width: auto; max-width: none;
+}
+body[data-page="home"] .moss-hero h1 {
+  font-family: var(--moss-font-heading); font-weight: 300; font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--moss-color-text); margin: 0; opacity: 0; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+body[data-page="home"] .moss-hero h1 + p {
+  font-family: var(--moss-font-heading); font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--sl-dim); margin: 1rem 0 0; letter-spacing: 0.04em;
+  opacity: 0; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+body[data-page="home"] main { position: relative; z-index: 2; margin-top: 100vh; background: #000; }
+body[data-page="home"] main::before { content: ""; position: absolute; top: -40vh; left: 0; right: 0; height: 40vh; background: linear-gradient(to bottom, transparent, #000); pointer-events: none; }
+body[data-page="home"] main article { padding-top: 6rem; }
+body[data-page="home"] main article > h2:first-child { color: var(--sl-moss); }
+body[data-page="home"] main article p:nth-of-type(1) { font-size: 1.25rem; line-height: 1.75; margin-bottom: 1.2rem; }
+body[data-page="home"] main article p:nth-of-type(2) { font-size: 1.1rem; color: var(--sl-faint-text); letter-spacing: 0.06em; margin-bottom: 3.5rem; }
+
+.links { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.links a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.04em; color: var(--sl-dim); text-decoration: none; transition: color 0.25s; }
+.links a:hover { color: var(--sl-moss-bright); }
+.links svg { width: 18px; height: 18px; opacity: 0.6; }
+.links a:hover svg { opacity: 1; }
+
+main article hr { width: 40px; height: 1px; border: 0; background: var(--sl-faint); margin: 6rem 0 5rem; }
+
+/* "Custom web craft" lead paragraph (first paragraph after the second h2) */
+main article h2:nth-of-type(2) { color: var(--moss-color-text); margin-bottom: 2.4rem; }
+main article h2:nth-of-type(2) + p { font-family: var(--moss-font-heading); font-style: italic; font-size: 1.5rem; line-height: 1.5; color: var(--moss-color-text); margin-bottom: 2.8rem; }
+main article .work-clients p { font-size: 1rem; font-style: italic; color: var(--sl-faint-text); margin-bottom: 2.6rem; }
+main article .work-cta p { font-size: 0.95rem; letter-spacing: 0.04em; margin: 0; }
+main article .work-cta a { color: var(--sl-dim); text-decoration: none; border-bottom: 1px solid var(--sl-faint); padding-bottom: 2px; transition: color 0.25s, border-color 0.25s; }
+main article .work-cta a:hover { color: var(--sl-moss-bright); border-color: var(--sl-moss-bright); }
+
+footer.container { text-align: left; border: 0; position: relative; z-index: 2; background: #000; max-width: 640px; margin: 0 auto; padding: 0 2rem 1rem; box-sizing: border-box; width: 100%; font-size: 1rem; color: var(--sl-faint-text); letter-spacing: 0.04em; }
+footer.container::before { width: 40px; border-block-start-color: var(--sl-faint); margin-block: 0 4rem; }
+footer.container p { margin: 0; font-size: 1rem; line-height: 1.75; }
+footer.container a { color: var(--sl-faint-text); text-decoration: none; }
+footer.container a:hover { color: var(--sl-moss-bright); }
+
+@media (max-width: 600px) {
+  body[data-page="home"] .moss-hero img { object-position: 73% 25%; }
+  main article, footer.container { padding-inline: 1.5rem; }
+  body[data-page="home"] main article { padding-top: 4rem; }
+  .links { gap: 1.5rem; }
+}
+
+/* Reveal-on-scroll: hidden only when script.js has set .js on <html> (so no-JS readers see everything) and motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js body[data-page="home"] main article > * { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  html.js body[data-page="home"] main.revealed article > * { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="home"] .moss-hero img { animation: none; }
+  body[data-page="home"] .moss-hero-content::after { animation: none; opacity: 0.6; }
+}
+
+/* Hero: decorative scroll cue */
+body[data-page="home"] .moss-hero-content::after {
+  content: ""; position: absolute; bottom: 2.5rem; left: 50%; width: 1px; height: 48px; transform-origin: top;
+  background: linear-gradient(to bottom, var(--sl-faint), transparent); opacity: 0;
+  animation: fadeIn 1s ease 2s forwards, pulseLine 2.5s ease-in-out 3s infinite;
+}
+@keyframes fadeIn { to { opacity: 0.6; } }
+@keyframes pulseLine { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 0.8; transform: scaleY(1.2); } }
+/* Hero image credit lives in the footer: a fixed one sits under the panel gradient and is unreadable. Home only, since only home shows the image. */
+.image-credit { display: block; margin-top: 0.6rem; font-size: 0.8rem; letter-spacing: 0.02em; }
+body:not([data-page="home"]) .image-credit { display: none; }
+.image-credit a { color: inherit; text-decoration: none; border: 0; padding: 0; background: none; box-shadow: none; transition: color 0.3s; }
+.image-credit a:hover { color: var(--moss-color-text); }
+
+/* shim: moss gap — always-visible heading anchors on the home page (script.js adds them); delete when moss provides it */
+/* Section anchors: the original always shows a dim "#" before the heading
+   (in the left margin on wide screens); moss's default is hover-only, after the text. */
+main article h2 { display: flex; align-items: baseline; }
+main article h2 .moss-heading-anchor { order: -1; opacity: 1; margin: 0 0.35em 0 0; font-size: 0.55em; letter-spacing: 0; color: var(--sl-moss); vertical-align: 0.45em; }
+main article h2 .moss-heading-anchor:hover, main article h2 .moss-heading-anchor:focus-visible { color: var(--sl-moss-bright); }
+@media (min-width: 760px) {
+  main article h2 .moss-heading-anchor { position: absolute; right: 100%; top: 0; margin-right: 0.6em; }
+}
+@media (hover: none) { main article h2 .moss-heading-anchor { display: inline; } }
+
+/* Footer: status pill + logo mark. The footer.md link [checking](/status) is the hook script.js finds as a[href="/status"]; keep them in step. */
+footer.container a[href="/status"] { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 0.2rem; }
+footer.container a[href="/status"]::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--sl-faint); flex-shrink: 0; transition: background 0.4s; }
+footer.container a[data-status="ok"]::before { background: var(--sl-moss-bright); }
+footer.container a[data-status="degraded"]::before { background: var(--sl-amber); }
+footer.container a[data-status="down"]::before { background: var(--sl-red); }
+footer.container a[href="/status"]:hover { color: var(--sl-moss-bright); }
+footer.container img { height: 1.1em; width: auto; vertical-align: -0.15em; margin-right: 0.3rem; filter: brightness(0) invert(1); opacity: 0.25; }
+footer.container a:hover img { opacity: 0.5; }
+
+/* Status page (status.md) */
+article:has(#overall) { padding-top: 7rem; max-width: 680px; }
+article:has(#overall) > h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.breadcrumb { margin-bottom: 4rem; }
+article:has(#overall) > p:last-child { margin-top: 4rem; }
+.breadcrumb p { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sl-faint-text); margin: 0; }
+.breadcrumb a { color: var(--sl-faint-text); text-decoration: none; }
+.breadcrumb a:hover { color: var(--sl-moss-bright); }
+.overall { font-family: var(--moss-font-heading); font-size: clamp(2rem, 4vw, 2.6rem); letter-spacing: 0.04em; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 1rem; }
+.overall .dot, .service-name .dot { border-radius: 50%; background: var(--sl-faint); flex-shrink: 0; transition: background 0.5s; }
+.overall .dot { width: 0.65rem; height: 0.65rem; }
+.service-name .dot { width: 0.5rem; height: 0.5rem; }
+[data-status="ok"] > .dot { background: var(--sl-moss-bright); }
+[data-status="degraded"] > .dot { background: var(--sl-amber); }
+[data-status="down"] > .dot { background: var(--sl-red); }
+.checked { font-size: 0.95rem; color: var(--sl-faint-text); margin-bottom: 4.5rem; }
+.checked a { color: var(--sl-dim); text-decoration: none; border-bottom: 1px solid var(--sl-faint); margin-left: 0.7rem; padding-bottom: 1px; }
+.services { list-style: none; padding: 0; margin: 0; }
+.services li { margin: 0; display: flex; justify-content: space-between; align-items: baseline; padding: 1.4rem 0; gap: 1.5rem; }
+.service-name { font-size: 1.15rem; color: var(--moss-color-text); display: flex; align-items: center; gap: 0.85rem; }
+.service-uptime { font-size: 0.95rem; color: var(--sl-faint-text); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.error { padding: 2rem 0; color: var(--sl-dim); font-size: 1.05rem; line-height: 1.7; }
+@media (max-width: 600px) { article:has(#overall) { padding-top: 4rem; } .checked { margin-bottom: 3rem; } }

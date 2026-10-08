@@ -92,7 +92,9 @@ Metadata from a spreadsheet, faceted browse, data downloads, IIIF deep zoom and 
 3. **Spreadsheet collections in moss.** A spreadsheet in a folder becomes one page per row, using CollectionBuilder's column names. When we built Hiroshige's Tōkaidō both ways, changing the credit line on every print took one edit in the spreadsheet and fifty-five in separate files.
 4. **What collections expect.** Data downloads, a rights field, faceted browse and search by field.
 
-![Diagram. A spreadsheet row names kanbara-01.jpg but the file is kanbara_01.jpg. Today you install six to nine tools, build and publish, and learn of it from a broken image. With moss the live preview flags the row as you edit and suggests the fix, then you publish. Same spreadsheet, folder and templates.](catch-it-where-it-happens.svg)
+![One spreadsheet reader checks the data, then feeds CollectionBuilder's templates, moss pages, or Jekyll with a GitHub Action; all three publish a site.](b1-dark.svg)
+
+![One spreadsheet reader checks the data, then feeds CollectionBuilder's templates, moss pages, or Jekyll with a GitHub Action; all three publish a site.](b1-dark-wide.svg)
 
 All of it is open source, and the spreadsheet and folder stay yours whichever tool builds them.
 

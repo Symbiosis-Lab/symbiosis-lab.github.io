@@ -33,7 +33,7 @@ Images sized for every screen; video, audio, PDFs and 3D models; a series in ord
 
 ### Found, searched and read
 
-Search that runs in the visitor's browser, Chinese included; sites in two or more languages; a sitemap for search engines; skip links, landmarks, reduced motion and readable contrast by default.
+Search that runs in the visitor's browser, Chinese included; sites in two or more languages, and vertical Chinese typesetting; a sitemap for search engines; skip links, landmarks, reduced motion and readable contrast by default.
 
 ![Search results for Hakone on the Tōkaidō catalogue: the print's own page first, then the place and the artist.](search.jpg)
 
@@ -47,6 +47,10 @@ Faceted browse, IIIF deep zoom, pages generated from a spreadsheet, rights field
 [![Hiroshige's Tōkaidō catalogue: a snow scene at Kanbara, with the series title over it.](hiroshige.jpg)](https://tokaido.mosspub.com/)
 
 **[Fifty-three Stations of the Tōkaidō](https://tokaido.mosspub.com/).** Hiroshige's fifty-five prints of the road from Edo to Kyoto, in order, each with its catalogue record and a place on the map.
++++
+[![Zhu Da's site: his name and a poem set in vertical Chinese beside tiles for calligraphy, paintings and writings.](zhu-da.jpg)](https://www.zhudasnotebook.com/)
+
+**[Zhu Da (八大山人)](https://www.zhudasnotebook.com/).** The painter's paintings, calligraphy and letters, 1626–1705, set in vertical Chinese.
 +++
 [![William Blake's notebook: three tiles for illuminated books, paintings and prints, and writings.](william-blake.jpg)](https://www.blakesnotebook.com/)
 

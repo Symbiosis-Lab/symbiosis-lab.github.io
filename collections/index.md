@@ -11,29 +11,35 @@ Symbiosis Lab builds collection, archive and exhibition sites with [moss](https:
 
 ## What moss does for collections today
 
-:::grid 2
-![A print page: the full image, with its caption and title beneath.](object-page.jpg)
+### Cheap to run, and it keeps running
 
-**One page per object.** The image first, then the catalogue record: artist, date, credit, licence and source.
+A moss site is plain static files: no server, no database, no map or font service from a third party. Hosting costs little or nothing on GitHub Pages or any web host, and the site keeps working after the grant ends and the people who built it move on. moss also refuses to publish a change that would break an address people already link to.
+
+### Run by the people who hold the collection
+
+A collection is a folder: pages in markdown, images beside them. The moss app opens the folder, shows the site as you edit, and publishes it. There is no developer to hire and nothing else to install. (The app runs on macOS today; Windows is in progress.)
+
+### A proper page for every object
+
+Images sized for every screen; video, audio, PDFs and 3D models; a series in order, with "37 of 55"; places, maps and routes; dates; pages for people and subjects.
+
+:::grid 3
+![A print page: the full image, with its caption and title beneath.](object-page.jpg)
 +++
 ![The foot of a print page: a table of metadata, then links to the previous and next print.](object-metadata.jpg)
-
-**Ordered sequences.** Previous and next follow the order of the series, with the place in it: 37 of 55.
 +++
 ![A map of Japan with clusters of numbered places and a strip of print cards along the bottom.](places-map.jpg)
-
-**Places and maps.** Each object sits where it was made or depicted, with a map of the whole collection.
-+++
-![The Simplified Chinese home page of a theatre company's site.](bilingual.jpg)
-
-**Bilingual sites.** One site, two or more language editions, each with its own address.
 :::
 
-- **Image variants, made automatically.** Every picture is resized and converted when the site is built, so you keep one original.
-- **Search** across the whole site, with nothing to host.
-- **Chinese typesetting.** Chinese and English editions of one site, set with their own type.
-- **Publish to GitHub Pages or any host** that serves files.
-- **Static files that keep working.** A built site is plain HTML, CSS and images, and it does not depend on moss, or on us, to stay up.
+### Found, searched and read
+
+Search that runs in the visitor's browser, Chinese included; sites in two or more languages; a sitemap for search engines; skip links, landmarks, reduced motion and readable contrast by default.
+
+![Search results for Hakone on the Tōkaidō catalogue: the print's own page first, then the place and the artist.](search.jpg)
+
+### Not yet
+
+Faceted browse, IIIF deep zoom, pages generated from a spreadsheet, rights fields and structured metadata. The CollectionBuilder work below starts with the spreadsheet.
 
 ## Collections we built
 
@@ -55,7 +61,7 @@ Symbiosis Lab builds collection, archive and exhibition sites with [moss](https:
 **[Chautauqua Literary and Scientific Circle](https://chautauqua-circle.mosspub.com/).** A nineteenth-century reading circle: its course of reading, local circles and notices.
 :::
 
-## Client work
+## Selected client work
 
 :::grid 2
 [![SoCiviC Theatre's home page: the title of the current production beside its poster.](socivic-theatre.jpg)](https://www.socivic.org/)
@@ -86,15 +92,7 @@ This is proposed work. We have not shipped it.
 
 One measured fact: a no-Ruby prototype reproduced 93–99% of Jekyll's rendered files byte for byte on CollectionBuilder's demo and three community sites, and 98–100% when whitespace is ignored. It is a prototype.
 
-![Diagram. One spreadsheet and folder, two routes, both ending in the same published site.](two-routes-proposed.svg)
-
-:::grid 2 {.figures}
-![Route 1. A preview flags the broken row as you work.](with-moss-proposed.svg)
-+++
-![Route 2. A check holds the broken row and makes the thumbnails.](on-jekyll-proposed.svg)
-:::
-
-Figures drawn with Hairline by Lucas Marques (MIT).
+![Diagram. A spreadsheet row names kanbara-01.jpg but the file is kanbara_01.jpg. Today you install six to nine tools, build and publish, and learn of it from a broken image. With moss the live preview flags the row as you edit and suggests the fix, then you publish. Same spreadsheet, folder and templates.](catch-it-where-it-happens.svg)
 
 ## Contact
 

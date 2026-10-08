@@ -188,9 +188,16 @@ main article:has(.moss-grid) .moss-grid-card a { text-decoration-color: var(--sl
 main article:has(.moss-grid) > ul { padding-inline-start: 1.2rem; }
 main article:has(.moss-grid) > ul li { font-size: 1.1rem; line-height: 1.7; color: var(--sl-dim); margin-bottom: 0.7rem; }
 main article:has(.moss-grid) > ul li strong { color: var(--moss-color-text); font-weight: 400; }
-main article:has(.moss-grid) > figure.moss-image { max-width: 26rem; margin-block: 3rem; }
+main article:has(.moss-grid) > figure.moss-image { max-width: 36rem; margin-block: 2.5rem 3.5rem; }
+main article:has(.moss-grid) > figure.moss-image img { outline: 1px solid rgba(255, 255, 255, 0.12); outline-offset: -1px; }
+/* The hand-drawn diagram carries its own black ground and 12px+ text at 360 units wide: show it 1:1 on a phone by letting it
+   run past the article padding, and about 600px wide on a desktop. */
+main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) { max-width: 600px; }
+main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) img { outline: 0; width: 100%; height: auto; }
+main article:has(.moss-grid) > h3 { font-size: 1.25rem; font-weight: 400; margin: 3rem 0 0.6rem; color: var(--moss-color-text); }
+main article:has(.moss-grid) > h3 + p { font-size: 1.1rem; line-height: 1.7; color: var(--sl-dim); margin-top: 0; }
 main article:has(.moss-grid) > figure.moss-image figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 main article:has(.moss-grid) .figures { --moss-grid-image-ratio: 3 / 2; --moss-grid-image-fit: contain; --moss-grid-image-radius: 0; }
 main article:has(.moss-grid) .figures img { outline: 0; }
 main article:has(.moss-grid) .figures figcaption { font-style: normal; font-size: 0.95rem; color: var(--sl-dim); text-align: start; }
-@media (max-width: 600px) { main article:has(.moss-grid) > h1 { margin-top: 4rem; } main article:has(.moss-grid) > .moss-grid { gap: 2.5rem 1rem; } }
+@media (max-width: 600px) { main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) { width: min(360px, 100vw); margin-inline: calc((100% - min(360px, 100vw)) / 2); } main article:has(.moss-grid) > h1 { margin-top: 4rem; } main article:has(.moss-grid) > .moss-grid { gap: 2.5rem 1rem; } }

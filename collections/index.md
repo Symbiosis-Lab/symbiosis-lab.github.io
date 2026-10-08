@@ -11,43 +11,41 @@ Symbiosis Lab builds collection, archive and exhibition sites with [moss](https:
 
 ## What moss does for collections today
 
-### Cheap to run, and it keeps running
+A moss site is plain static files: no server, no database and nothing loaded from a third party, so it costs little or nothing to host on GitHub Pages or any web host, and it keeps working after the grant ends and the people who built it move on. Every object gets its own page: images sized for every screen, a series in order with "37 of 55", places on a map, and search that runs in the visitor's browser.
 
-A moss site is plain static files: no server, no database, no map or font service from a third party. Hosting costs little or nothing on GitHub Pages or any web host, and the site keeps working after the grant ends and the people who built it move on. moss also refuses to publish a change that would break an address people already link to.
-
-### Run by the people who hold the collection
-
-A collection is a folder: pages in markdown, images beside them. The moss app opens the folder, shows the site as you edit, and publishes it. There is no developer to hire and nothing else to install. (The app runs on macOS today; Windows is in progress.)
-
-### A proper page for every object
-
-Images sized for every screen; video, audio, PDFs and 3D models; a series in order, with "37 of 55"; places, maps and routes; dates; pages for people and subjects.
-
-:::grid 3
+:::grid 2
 ![A print page: the full image, with its caption and title beneath.](object-page.jpg)
 +++
 ![The foot of a print page: a table of metadata, then links to the previous and next print.](object-metadata.jpg)
 +++
 ![A map of Japan with clusters of numbered places and a strip of print cards along the bottom.](places-map.jpg)
++++
+![Search results for Hakone on the Tōkaidō catalogue: the print's own page first, then the place and the artist.](search.jpg)
 :::
 
-### Found, searched and read
+### Beyond a typical static site generator
 
-Search that runs in the visitor's browser, Chinese included; sites in two or more languages, and vertical Chinese typesetting; a sitemap for search engines; skip links, landmarks, reduced motion and readable contrast by default.
-
-![Search results for Hakone on the Tōkaidō catalogue: the print's own page first, then the place and the artist.](search.jpg)
+- **Nothing to install but the app.** Open the folder in the moss app; there is no programming language, package manager or image toolkit to set up first. (The app runs on macOS today; Windows is in progress.)
+- **A live preview that points at problems.** The site updates as you edit, and problems are reported while you work, not after you publish.
+- **Images and media, handled.** Sizes and formats are made for you; video, audio, PDF and 3D files embed the same way as images.
+- **Maps that ship with the site.** A page for every place and routes along a journey, with the map data included rather than loaded from an online service.
+- **Several languages per site.**
+- **Essays beside the catalogue.** Essays, series and object pages live in one folder and link to each other.
+- **Publishing that protects your links.** Publish from the app to GitHub Pages or any host; moss refuses to publish a change that would break an address people already link to.
 
 ### Not yet
 
-Faceted browse, IIIF deep zoom, pages generated from a spreadsheet, rights fields and structured metadata. The CollectionBuilder work below starts with the spreadsheet.
+Metadata from a spreadsheet, faceted browse, data downloads, IIIF deep zoom and rights fields. That is where moss is going next.
 
 ## Collections we built
 
-:::grid 2
+:::grid 1
 [![Hiroshige's Tōkaidō catalogue: a snow scene at Kanbara, with the series title over it.](hiroshige.jpg)](https://tokaido.mosspub.com/)
 
 **[Fifty-three Stations of the Tōkaidō](https://tokaido.mosspub.com/).** Hiroshige's fifty-five prints of the road from Edo to Kyoto, in order, each with its catalogue record and a place on the map.
-+++
+:::
+
+:::grid 2
 [![Zhu Da's site: his name and a poem set in vertical Chinese beside tiles for calligraphy, paintings and writings.](zhu-da.jpg)](https://www.zhudasnotebook.com/)
 
 **[Zhu Da (八大山人)](https://www.zhudasnotebook.com/).** The painter's paintings, calligraphy and letters, 1626–1705, set in vertical Chinese.
@@ -85,18 +83,18 @@ Faceted browse, IIIF deep zoom, pages generated from a spreadsheet, rights field
 **[在場·獎學金](https://frontline.mosspub.com/).** A Chinese-language scholarship programme: its writing and comics awards, past seasons, a map of places and an English section.
 :::
 
-## Proposed: CollectionBuilder in moss
+## Where moss is going: collections from a spreadsheet
 
-This is proposed work. We have not shipped it.
+[CollectionBuilder](https://collectionbuilder.github.io/) has the right idea: a collection is a spreadsheet and a folder of files, and the website is built from them. That is also where moss is weakest today. So the next stage of moss brings the two together, in steps that each stand on their own:
 
-[CollectionBuilder](https://collectionbuilder.github.io/) is the Jekyll toolkit that many libraries and archives use to publish a spreadsheet of objects as a website. We propose two ways to bring it together with moss, and either one starts from the same spreadsheet and folder.
-
-- **Route 1, build with moss.** A CollectionBuilder project runs unchanged in moss, with no Ruby. It keeps CollectionBuilder's own templates and look, shows a live preview that flags metadata problems where they occur, and publishes anywhere.
-- **Route 2, check on Jekyll.** The same checks, and image and PDF thumbnails, as a GitHub Action for projects that are staying on Jekyll.
-
-One measured fact: a no-Ruby prototype reproduced 93–99% of Jekyll's rendered files byte for byte on CollectionBuilder's demo and three community sites, and 98–100% when whitespace is ignored. It is a prototype.
+1. **Checks and thumbnails for every CollectionBuilder project.** A command and a GitHub Action that catch metadata problems before the site builds, and make image and PDF thumbnails without ImageMagick or Ghostscript. Useful whether or not you ever open moss.
+2. **CollectionBuilder projects in moss, unchanged.** Open the folder and get a live preview, problems flagged where they occur, and publishing anywhere, with CollectionBuilder's own templates and look and no Ruby. A prototype already reproduces 93–99% of Jekyll's pages byte for byte on CollectionBuilder's demo and three community sites.
+3. **Spreadsheet collections in moss.** A spreadsheet in a folder becomes one page per row, using CollectionBuilder's column names. When we built Hiroshige's Tōkaidō both ways, changing the credit line on every print took one edit in the spreadsheet and fifty-five in separate files.
+4. **What collections expect.** Data downloads, a rights field, faceted browse and search by field.
 
 ![Diagram. A spreadsheet row names kanbara-01.jpg but the file is kanbara_01.jpg. Today you install six to nine tools, build and publish, and learn of it from a broken image. With moss the live preview flags the row as you edit and suggests the fix, then you publish. Same spreadsheet, folder and templates.](catch-it-where-it-happens.svg)
+
+All of it is open source, and the spreadsheet and folder stay yours whichever tool builds them.
 
 ## Contact
 

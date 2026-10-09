@@ -105,20 +105,19 @@ body[data-page="home"] main::before { content: ""; position: absolute; top: -40v
 body[data-page="home"] main article { padding-top: 6rem; }
 body[data-page="home"] main article > h2:first-child { color: var(--sl-moss); }
 body[data-page="home"] main article p:nth-of-type(1) { font-size: 1.25rem; line-height: 1.75; margin-bottom: 1.2rem; }
-body[data-page="home"] main article p:nth-of-type(2) { font-size: 1.1rem; color: var(--sl-faint-text); letter-spacing: 0.06em; margin-bottom: 3.5rem; }
+body[data-page="home"] main article p:nth-of-type(2) { font-size: 1.1rem; color: var(--sl-faint-text); letter-spacing: 0.06em; margin-bottom: 1.2rem; }
 
-.links { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-.links a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.04em; color: var(--sl-dim); text-decoration: none; transition: color 0.25s; }
-.links a:hover { color: var(--sl-moss-bright); }
-.links svg { width: 18px; height: 18px; opacity: 0.6; }
-.links a:hover svg { opacity: 1; }
-
-main article hr { width: 40px; height: 1px; border: 0; background: var(--sl-faint); margin: 6rem 0 5rem; }
-
-/* "Custom web craft" lead paragraph (first paragraph after the second h2) */
-body[data-page="home"] main article h2:nth-of-type(2) { color: var(--moss-color-text); margin-bottom: 2.4rem; }
-body[data-page="home"] main article h2:nth-of-type(2) + p { font-family: var(--moss-font-heading); font-style: italic; font-size: 1.5rem; line-height: 1.5; color: var(--moss-color-text); margin-bottom: 2.8rem; }
-main article .work-clients p { font-size: 1rem; font-style: italic; color: var(--sl-faint-text); margin-bottom: 2.6rem; }
+/* The lead line under the seta and Custom web craft headings (the 2nd and 3rd h2): serif italic, like the prototype. */
+body[data-page="home"] main article h2:nth-of-type(n+2) { color: var(--moss-color-text); margin-top: 5rem; margin-bottom: 2.4rem; }
+body[data-page="home"] main article h2:nth-of-type(n+2) + p { font-family: var(--moss-font-heading); font-style: italic; font-size: 1.5rem; line-height: 1.5; color: var(--moss-color-text); margin-bottom: 2.8rem; }
+/* seta's plain list becomes a quiet ruled table: bold label left, one line right (the 640px column is too narrow for two list columns), stacked on phones. */
+body[data-page="home"] main article ul { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid var(--sl-faint); }
+body[data-page="home"] main article ul li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--sl-faint); font-size: 1rem; line-height: 1.55; color: var(--sl-dim); }
+/* The label is a bold run; make it a small-caps-style tag so it reads as a label, not emphasis. */
+body[data-page="home"] main article ul li strong { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--moss-color-text); padding-top: 0.2rem; }
+@media (max-width: 420px) { body[data-page="home"] main article ul li { grid-template-columns: 1fr; gap: 0.1rem; } }
+/* The two moss links sit side by side, like the prototype's arrow links. */
+main article .work-cta p { display: flex; flex-wrap: wrap; gap: 0.4rem 2rem; }
 main article .work-cta p { font-size: 0.95rem; letter-spacing: 0.04em; margin: 0; }
 main article .work-cta a { color: var(--sl-dim); text-decoration: none; border-bottom: 1px solid var(--sl-faint); padding-bottom: 2px; transition: color 0.25s, border-color 0.25s; }
 main article .work-cta a:hover { color: var(--sl-moss-bright); border-color: var(--sl-moss-bright); }
@@ -133,7 +132,6 @@ footer.container a:hover { color: var(--sl-moss-bright); }
   body[data-page="home"] .moss-hero img { object-position: 73% 25%; }
   main article, footer.container { padding-inline: 1.5rem; }
   body[data-page="home"] main article { padding-top: 4rem; }
-  .links { gap: 1.5rem; }
 }
 
 /* Reveal-on-scroll: hidden only when script.js has set .js on <html> (so no-JS readers see everything) and motion is allowed. */

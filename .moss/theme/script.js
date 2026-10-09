@@ -1,6 +1,6 @@
 document.documentElement.classList.add('js'); // lets the stylesheet hide reveal-on-scroll content only when JS can reveal it
 
-// shim: moss gap — section permalinks on the home page; delete when moss provides it
+/* shim: moss gap — heading anchors on the home page; delete when the pinned moss release builds them */
 // moss omits section permalinks on the home page; add them so each section stays shareable.
 // moss's own click handler copies the link for any a.moss-heading-anchor.
 document.querySelectorAll('body[data-page="home"] main h2[id]').forEach(function (h) {

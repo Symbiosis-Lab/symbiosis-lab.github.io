@@ -9,9 +9,9 @@ content_width: wide
 
 Symbiosis Lab builds collection, archive and exhibition sites with [moss](https://github.com/Symbiosis-Lab/moss), its open-source tool. A site is a folder of files you own: pages in markdown, images beside them, a spreadsheet of metadata if you keep one. There is no server and no database, and the finished site can be published anywhere.
 
-## What moss does for collections today
+## moss on collections
 
-A moss site is plain static files: no server, no database and nothing loaded from a third party, so it costs little or nothing to host on GitHub Pages or any web host, and it keeps working after the grant ends and the people who built it move on. Every object gets its own page: images sized for every screen, a series in order with "37 of 55", places on a map, and search that runs in the visitor's browser.
+A moss site is plain files: no server, no database, nothing loaded from elsewhere. It costs little to host and keeps working after the grant ends. Every object gets its own page, and visitors can search the whole collection.
 
 :::grid 2
 ![A print page: the full image, with its caption and title beneath.](object-page.jpg)
@@ -25,17 +25,13 @@ A moss site is plain static files: no server, no database and nothing loaded fro
 
 ### Beyond a typical static site generator
 
-- **Nothing to install but the app.** Open the folder in the moss app; there is no programming language, package manager or image toolkit to set up first. (The app runs on macOS today; Windows is in progress.)
-- **A live preview that points at problems.** The site updates as you edit, and problems are reported while you work, not after you publish.
-- **Images and media, handled.** Sizes and formats are made for you; video, audio, PDF and 3D files embed the same way as images.
-- **Maps that ship with the site.** A page for every place and routes along a journey, with the map data included rather than loaded from an online service.
+- **Nothing to install but the app.** No programming language, package manager or image tools to set up. (The app runs on macOS; Windows is in progress.)
+- **A live preview.** The site updates as you edit, and problems are reported while you work.
+- **Images and media, handled.** Sizes and formats are made for you; video, audio, PDF and 3D files embed like images.
+- **Maps that ship with the site.** A page for every place, and routes along a journey, with no online map service.
 - **Several languages per site.**
-- **Essays beside the catalogue.** Essays, series and object pages live in one folder and link to each other.
-- **Publishing that protects your links.** Publish from the app to GitHub Pages or any host; moss refuses to publish a change that would break an address people already link to.
-
-### Not yet
-
-Metadata from a spreadsheet, faceted browse, data downloads, IIIF deep zoom and rights fields. That is where moss is going next.
+- **Essays beside the catalogue,** in one folder, linked to each other.
+- **Publishing that protects your links.** moss won't publish a change that breaks an address people already use.
 
 ## Collections we built
 
@@ -83,9 +79,9 @@ Metadata from a spreadsheet, faceted browse, data downloads, IIIF deep zoom and 
 **[在場·獎學金](https://frontline.mosspub.com/).** A Chinese-language scholarship programme: its writing and comics awards, past seasons, a map of places and an English section.
 :::
 
-## Where moss is going: collections from a spreadsheet
+## Next: supporting CollectionBuilder
 
-[CollectionBuilder](https://collectionbuilder.github.io/) has the right idea: a collection is a spreadsheet and a folder of files, and the website is built from them. That is also where moss is weakest today. So the next stage of moss brings the two together, in steps that each stand on their own:
+[CollectionBuilder](https://collectionbuilder.github.io/) turns a spreadsheet and a folder of files into a collection website. moss can run those projects unchanged, and help the ones that stay on Jekyll.
 
 1. **Checks and thumbnails for every CollectionBuilder project.** A command and a GitHub Action that catch metadata problems before the site builds, and make image and PDF thumbnails without ImageMagick or Ghostscript. Useful whether or not you ever open moss.
 2. **CollectionBuilder projects in moss, unchanged.** Open the folder and get a live preview, problems flagged where they occur, and publishing anywhere, with CollectionBuilder's own templates and look and no Ruby. A prototype already reproduces 93–99% of Jekyll's pages byte for byte on CollectionBuilder's demo and three community sites.

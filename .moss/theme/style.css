@@ -227,11 +227,11 @@ main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) { max-wid
 main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) img { outline: 0; width: 100%; height: auto; }
 /* Two images, one diagram: portrait (360 wide) for phones, landscape (960 wide) from 800px up (the wide one must render 720px or more for its 12px text). moss has no art-directed <picture>
    (it emits <picture> only for format conversion), so the breakpoint lives here. */
-main article:has(.moss-grid) > figure.moss-image:has(img[src$="b1-dark.svg"]) { max-width: 600px; }
-main article:has(.moss-grid) > figure.moss-image:has(img[src$="b1-dark-wide.svg"]) { display: none; }
+main article:has(.moss-grid) > figure.moss-image:has(img[src$="diagram2-narrow.svg"]) { max-width: 600px; }
+main article:has(.moss-grid) > figure.moss-image:has(img[src$="diagram2-wide.svg"]) { display: none; }
 @media (min-width: 800px) {
-  main article:has(.moss-grid) > figure.moss-image:has(img[src$="b1-dark.svg"]) { display: none; }
-  main article:has(.moss-grid) > figure.moss-image:has(img[src$="b1-dark-wide.svg"]) { display: block; }
+  main article:has(.moss-grid) > figure.moss-image:has(img[src$="diagram2-narrow.svg"]) { display: none; }
+  main article:has(.moss-grid) > figure.moss-image:has(img[src$="diagram2-wide.svg"]) { display: block; }
 }
 main article:has(.moss-grid) > h3 { font-family: var(--moss-font-heading); font-size: 1.9rem; letter-spacing: 0.06em; font-weight: 400; margin: 4rem 0 1.4rem; color: var(--moss-color-text); }
 main article:has(.moss-grid) > h3 + p { font-size: 1.1rem; line-height: 1.7; color: var(--sl-dim); margin-top: 0; }

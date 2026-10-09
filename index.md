@@ -46,12 +46,6 @@ Clients on request.
 [Start a conversation →](mailto:hi@symbiosis-lab.org)
 :::
 
----
-
-## Collections
-
-We build collection, archive and exhibition sites for libraries, archives and museums. One page per object, places on a map, ordered sequences, search, and a site you own as plain files.
-
 ::: {.work-cta}
-[See the collections →](/collections/)
+[Selected clients and collections →](/collections/)
 :::

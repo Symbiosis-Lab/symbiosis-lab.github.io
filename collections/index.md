@@ -83,16 +83,38 @@ A moss site is plain files: no server, no database, nothing loaded from elsewher
 
 ## Next: supporting CollectionBuilder
 
-[CollectionBuilder](https://collectionbuilder.github.io/) turns a spreadsheet and a folder of files into a collection website. moss can run those projects unchanged, and help the ones that stay on Jekyll.
+CollectionBuilder turns a spreadsheet and a folder of objects into a collection website. moss will work with those projects exactly as they are, so choosing a route is never final.
 
-1. **Checks and thumbnails for every CollectionBuilder project.** A command and a GitHub Action that catch metadata problems before the site builds, and make image and PDF thumbnails without ImageMagick or Ghostscript. Useful whether or not you ever open moss.
-2. **CollectionBuilder projects in moss, unchanged.** Open the folder and get a live preview, problems flagged where they occur, and publishing anywhere, with CollectionBuilder's own templates and look and no Ruby. A prototype already reproduces 93–99% of Jekyll's pages byte for byte on CollectionBuilder's demo and three community sites.
-3. **Spreadsheet collections in moss.** A spreadsheet in a folder becomes one page per row, using CollectionBuilder's column names. When we built Hiroshige's Tōkaidō both ways, changing the credit line on every print took one edit in the spreadsheet and fifty-five in separate files.
-4. **What collections expect.** Data downloads, a rights field, faceted browse and search by field.
+![A CollectionBuilder folder forks into two routes that use the same folder and files, so you can switch at any time: Jekyll, your existing build, and moss, which adds an editor, instant preview, search, maps and hosting. An arrow from moss up to Jekyll shows moss running checks, verifications and thumbnails for the Jekyll build. Both routes then flow into GitHub Pages or other hosts.](diagram2-wide.svg)
 
-![One spreadsheet reader checks the data, then feeds CollectionBuilder's templates, moss pages, or Jekyll with a GitHub Action; all three publish a site.](b1-dark.svg)
+![A CollectionBuilder folder forks into two routes that use the same folder and files, so you can switch at any time: Jekyll, your existing build, and moss, which adds an editor, instant preview, search, maps and hosting. An arrow from moss up to Jekyll shows moss running checks, verifications and thumbnails for the Jekyll build. Both routes then flow into GitHub Pages or other hosts.](diagram2-narrow.svg)
 
-![One spreadsheet reader checks the data, then feeds CollectionBuilder's templates, moss pages, or Jekyll with a GitHub Action; all three publish a site.](b1-dark-wide.svg)
+:::grid 2
+### Route 1: preview and build in moss
+
+With CollectionBuilder's own templates and look.
+
+- A GUI and an editor for your files
+- Instant preview, problems flagged where they occur
+- Built-in search, maps and place pages
+- Publishing and hosting on your own domain
+- Everything else moss does
+
++++
+
+### Route 2: stay on Jekyll, aided by moss
+
+moss helps; your Jekyll build stays as it is.
+
+- Metadata checks, as a GitHub Action or a command
+- Image and PDF thumbnails, no ImageMagick or Ghostscript
+- Problems caught before Jekyll builds
+:::
+
+- **6 → 1** CollectionBuilder asks for Git, an editor, Ruby, Jekyll, ImageMagick and Ghostscript before a first preview. In moss you open the folder.
+- **93–99%** of Jekyll's rendered files, reproduced byte for byte without Ruby by a prototype, on CollectionBuilder's demo and three community sites.
+- **30 of 100** recent forum threads are "objects not showing", "0 items" or a 404 after publishing, caused by metadata mistakes found only after publishing. Both routes flag them first.
+- **0.7 s** to re-render after editing one cell at 10,000 items, instead of 35 s. Only the 5–10 pages that read it change. A prototype measurement, not shipped.
 
 All of it is open source, and the spreadsheet and folder stay yours whichever tool builds them.
 

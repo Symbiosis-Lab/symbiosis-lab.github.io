@@ -5,6 +5,8 @@ description: Collection, archive and exhibition sites built with moss, the open-
 lang: en
 children: false
 content_width: wide
+nav: true
+weight: 1
 ---
 
 Symbiosis Lab builds collection, archive and exhibition sites with [moss](https://github.com/Symbiosis-Lab/moss), its open-source tool. A site is a folder of files you own: pages in markdown, images beside them, a spreadsheet of metadata if you keep one. There is no server and no database, and the finished site can be published anywhere.

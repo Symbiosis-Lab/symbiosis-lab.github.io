@@ -36,8 +36,34 @@
 html { -webkit-font-smoothing: antialiased; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
-/* No site chrome: the original has no nav bar and no theme toggle. */
-header, .moss-colophon { display: none; }
+/* Colophon stays hidden; the header is moss's own. */
+.moss-colophon { display: none; }
+
+/* ── Header: moss's own masthead, quieted to fit the lab ── */
+/* Dark-only brand, so the sun/moon toggle would switch to a palette this site does not have. */
+.nav-theme-btn { display: none; }
+/* Wordmark in the display serif, the one place the header borrows the hero's voice. */
+header .site-name { font-family: var(--moss-font-heading); font-weight: 400; letter-spacing: 0.08em; }
+header .nav-links a { font-size: 0.95rem; letter-spacing: 0.04em; }
+/* 44px touch rows (WCAG 2.5.5); moss's invisible ::after hit area is not a visible target. */
+header .site-name, header .nav-links a { display: inline-flex; align-items: center; min-height: 44px; }
+header .mobile-menu-button { padding: 10px; }
+/* The mark is dark art for light grounds; flip it to white like the footer mark. */
+header .site-logo { filter: brightness(0) invert(1); opacity: 0.85; }
+/* The nav rule under the masthead is a white hairline on black; the lab's faint token is quieter. */
+header .nav-content { border-block-end-color: var(--sl-faint); padding-block-end: 0; }
+/* Every link reserves the current link's 2px underline, so labels share one baseline. */
+header .nav-links a { border-block-end: 2px solid transparent; }
+header .nav-links a.active { padding-block-end: 0; border-block-end-color: var(--sl-moss-bright); }
+/* Visible keyboard focus in the brand accent (moss only styles the theme button). */
+header a:focus-visible, header .mobile-menu-button:focus-visible { outline: 2px solid var(--sl-moss-bright); outline-offset: 2px; border-radius: 2px; }
+/* .nav-left clips overflow, which cut the wordmark's focus ring to a sliver; draw it inside. */
+header .site-name:focus-visible { outline-offset: -2px; }
+/* The mobile menu drops over the page: give it the black ground so links stay readable. */
+header .nav-links { background: #000; }
+/* Home: float the header over the fixed hero, on a soft top scrim so links stay legible on the bright limb of the Moon. */
+body[data-page="home"] header { position: absolute; inset: 0 0 auto 0; z-index: 3; background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent); padding-block-end: 1.5rem; }
+body[data-page="home"] header .nav-content { border-block-end: 0; }
 
 main article { max-width: 640px; margin-inline: auto; padding: 0 2rem; }
 main article h2 { font-family: var(--moss-font-heading); font-weight: 400; font-size: 2.4rem; letter-spacing: 0.08em; line-height: 1.2; margin: 0 0 1.8rem; scroll-margin-top: 2rem; position: relative; }
@@ -156,13 +182,9 @@ footer.container img { height: 1.1em; width: auto; vertical-align: -0.15em; marg
 footer.container a:hover img { opacity: 0.5; }
 
 /* Status page (status.md) */
-article:has(#overall) { padding-top: 7rem; max-width: 680px; }
+article:has(#overall) { padding-top: 3rem; max-width: 680px; }
 article:has(#overall) > h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.breadcrumb { margin-bottom: 4rem; }
 article:has(#overall) > p:last-child { margin-top: 4rem; }
-.breadcrumb p { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sl-faint-text); margin: 0; }
-.breadcrumb a { color: var(--sl-faint-text); text-decoration: none; }
-.breadcrumb a:hover { color: var(--sl-moss-bright); }
 .overall { font-family: var(--moss-font-heading); font-size: clamp(2rem, 4vw, 2.6rem); letter-spacing: 0.04em; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 1rem; }
 .overall .dot, .service-name .dot { border-radius: 50%; background: var(--sl-faint); flex-shrink: 0; transition: background 0.5s; }
 .overall .dot { width: 0.65rem; height: 0.65rem; }
@@ -177,14 +199,14 @@ article:has(#overall) > p:last-child { margin-top: 4rem; }
 .service-name { font-size: 1.15rem; color: var(--moss-color-text); display: flex; align-items: center; gap: 0.85rem; }
 .service-uptime { font-size: 0.95rem; color: var(--sl-faint-text); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
 .error { padding: 2rem 0; color: var(--sl-dim); font-size: 1.05rem; line-height: 1.7; }
-@media (max-width: 600px) { article:has(#overall) { padding-top: 4rem; } .checked { margin-bottom: 3rem; } }
+@media (max-width: 600px) { article:has(#overall) { padding-top: 2rem; } .checked { margin-bottom: 3rem; } }
 
 /* Collections page: a wider column for the screenshot grids, with the prose kept at the home page's reading measure.
    moss turns an image's alt text into a visible caption and leaves the img's own alt empty, so under a grid card the caption
    says what the screenshot shows and is kept for assistive tech but not shown twice; the text beside it is the visible one. */
-main article:has(.moss-grid) { max-width: 60rem; }
+main article:has(.moss-grid) { max-width: 60rem; padding-block-start: 2.5rem; }
 main article:has(.moss-grid) > :not(.moss-grid) { max-width: 640px; margin-inline: auto; }
-main article:has(.moss-grid) > h1 { font-family: var(--moss-font-heading); font-weight: 300; font-size: clamp(2.4rem, 6vw, 3.4rem); letter-spacing: 0.1em; margin-top: 6rem; }
+main article:has(.moss-grid) > h1 { font-family: var(--moss-font-heading); font-weight: 300; font-size: clamp(2.4rem, 6vw, 3.4rem); letter-spacing: 0.1em; margin-top: 3rem; }
 main article:has(.moss-grid) > .moss-grid { --moss-grid-image-ratio: 8 / 5; --moss-grid-image-radius: 2px; gap: 3rem 2rem; margin-block: 3rem 4rem; }
 main article:has(.moss-grid) .moss-grid-card figure { margin: 0 0 1rem; }
 main article:has(.moss-grid) .moss-grid-card img { outline: 1px solid rgba(255, 255, 255, 0.12); outline-offset: -1px; }
@@ -217,4 +239,4 @@ main article:has(.moss-grid) > figure.moss-image figcaption { position: absolute
 main article:has(.moss-grid) .figures { --moss-grid-image-ratio: 3 / 2; --moss-grid-image-fit: contain; --moss-grid-image-radius: 0; }
 main article:has(.moss-grid) .figures img { outline: 0; }
 main article:has(.moss-grid) .figures figcaption { font-style: normal; font-size: 0.95rem; color: var(--sl-dim); text-align: start; }
-@media (max-width: 600px) { main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) { width: min(360px, 100vw); margin-inline: calc((100% - min(360px, 100vw)) / 2); } main article:has(.moss-grid) > h1 { margin-top: 4rem; } main article:has(.moss-grid) > .moss-grid { gap: 2.5rem 1rem; } }
+@media (max-width: 600px) { main article:has(.moss-grid) > figure.moss-image:has(img[src$=".svg"]) { width: min(360px, 100vw); margin-inline: calc((100% - min(360px, 100vw)) / 2); }  main article:has(.moss-grid) > .moss-grid { gap: 2.5rem 1rem; } }

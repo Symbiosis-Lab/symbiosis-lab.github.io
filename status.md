@@ -4,11 +4,9 @@ uid: "0471f889"
 description: Operational status for Symbiosis Lab services.
 url: status
 listed: false
+nav: true
+weight: 2
 ---
-
-::: {.breadcrumb}
-[Symbiosis Lab](/) &nbsp;/&nbsp; Status
-:::
 
 <div class="overall" id="overall" data-status="checking"><span class="dot"></span><span id="overall-label" aria-live="polite">Checking</span></div>
 

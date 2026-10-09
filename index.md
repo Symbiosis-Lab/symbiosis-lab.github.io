@@ -30,7 +30,7 @@ moss is free, open source and local-first. It works on your computer, with or wi
 
 ## seta
 
-The service behind moss.
+The optional service behind moss.
 
 - **Sign-in** By email link or a cryptographic key. No passwords.
 - **Hosting** Publish to yourname.mosspub.com. Large sites upload in chunks.
